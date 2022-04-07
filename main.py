@@ -18,6 +18,9 @@ from time import sleep
 from random import randint
 
 
+# link for lines that i used for drawing the game map:
+# https: // en.wikipedia.org/wiki/Box-drawing_character
+
 def clear():
     """wipe the terminal."""
 
