@@ -33,6 +33,21 @@ def clear():
         system("cls")
 
 
+def create_game_map(gameMap):
+    """draw the game map"""
+
+    game_map = """
+╭───┬───┬───╮
+│ {0} │ {1} │ {2} │
+├───┼───┼───┤
+│ {3} │ {4} │ {5} │
+├───┼───┼───┤
+│ {6} │ {7} │ {8} │
+╰───┴───┴───╯
+""".format(*sum(gameMap, []))
+    print(game_map)
+
+
 def main():
     pass
 
