@@ -74,8 +74,29 @@ def get_usr_input(msg: str):
     return input(msg).strip().lower()
 
 
+def set_characters():
+    """ask the users about the character they want,
+    to play with it and get it from them, and select,
+    character for python too depending on the user character.
+
+    simply-out get the users character by asking them.
+    return tuple contain two strings,
+    values one for user-char and the another,
+    one for python-char."""
+
+    while (usr_char := get_usr_input("Choose 'X' or 'O': ")
+           .strip()
+           .lower()
+           ) not in ('x', 'o'):
+        # keep asking the user.
+        usr_char = get_usr_input("Choose 'X' or 'O': ").strip().lower()
+
+    return usr_char, ('x' if usr_char == 'o' else 'o')
+
+
 def main():
-    pass
+    u, p = set_characters()
+    print(f"'usr: {u}', py: '{p}'")
 
 
 if __name__ == "__main__":
