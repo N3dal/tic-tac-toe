@@ -68,6 +68,12 @@ def create_game_map(gameMap):
     print(game_map)
 
 
+def get_usr_input(msg: str):
+    """"""
+
+    return input(msg).strip().lower()
+
+
 def main():
     pass
 
