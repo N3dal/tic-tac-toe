@@ -86,12 +86,26 @@ def set_characters():
     return tuple contain two strings,
     values one for user-char and the another,
     one for python-char."""
-    usr_char = get_usr_input("Choose 'X' or 'O': ").strip().lower()
+    usr_char = get_usr_input("Choose 'X' or 'O': ")
     while usr_char not in ('x', 'o'):
         # keep asking the user.
-        usr_char = get_usr_input("Choose 'X' or 'O': ").strip().lower()
+        usr_char = get_usr_input("Choose 'X' or 'O': ")
 
     return usr_char, ('x' if usr_char == 'o' else 'o')
+
+
+def get_usr_move(available_moves: list[str]):
+    """ask the user about the next move,
+    and make sure that move in the right range,
+    and its available."""
+
+    usr_move = get_usr_input("Choose one move from the available ones: ")
+
+    while usr_move not in available_moves:
+        print("this move isn't available!!")
+        usr_move = get_usr_input("Choose one move from the available ones: ")
+
+    return usr_move
 
 
 def main():
@@ -101,9 +115,15 @@ def main():
         ['7', '8', '9']
     )
 
+    available_moves = list("123456789")
+
     # ask the users which char they want to play with,
     # and keep asking them until they give the right character.
     usr_char, python_char = set_characters()
+
+    create_game_map(gameMap)
+
+    usr_move = get_usr_move(available_moves)
 
 
 if __name__ == "__main__":
