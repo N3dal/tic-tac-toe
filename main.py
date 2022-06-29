@@ -21,6 +21,8 @@ from random import randint
 # link for lines that i used for drawing the game map:
 # https: // en.wikipedia.org/wiki/Box-drawing_character
 
+# TODO: add resume future, so save the player progress in json file.
+# TODO: and when its play again ask them to continue or not.
 
 # possible moves for user or python to win.
 MOVES_TO_WIN = [
@@ -95,8 +97,12 @@ def set_characters():
 
 
 def main():
-    u, p = set_characters()
-    print(f"'usr: {u}', py: '{p}'")
+    gameMap = (
+        ['1', '2', '3'],
+        ['4', '3', '6'],
+        ['7', '8', '9']
+    )
+    create_game_map(gameMap)
 
 
 if __name__ == "__main__":
