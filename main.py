@@ -23,6 +23,7 @@ from random import randint
 
 # TODO: add resume future, so save the player progress in json file.
 # TODO: and when its play again ask them to continue or not.
+# TODO: add line when you win cut the x line or o line.
 
 # possible moves for user or python to win.
 MOVES_TO_WIN = [
@@ -85,11 +86,8 @@ def set_characters():
     return tuple contain two strings,
     values one for user-char and the another,
     one for python-char."""
-
-    while (usr_char := get_usr_input("Choose 'X' or 'O': ")
-           .strip()
-           .lower()
-           ) not in ('x', 'o'):
+    usr_char = get_usr_input("Choose 'X' or 'O': ").strip().lower()
+    while usr_char not in ('x', 'o'):
         # keep asking the user.
         usr_char = get_usr_input("Choose 'X' or 'O': ").strip().lower()
 
@@ -102,7 +100,10 @@ def main():
         ['4', '3', '6'],
         ['7', '8', '9']
     )
-    create_game_map(gameMap)
+
+    # ask the users which char they want to play with,
+    # and keep asking them until they give the right character.
+    usr_char, python_char = set_characters()
 
 
 if __name__ == "__main__":
