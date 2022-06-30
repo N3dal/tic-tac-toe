@@ -94,7 +94,7 @@ def set_characters():
         # keep asking the user.
         usr_char = get_usr_input("Choose 'X' or 'O': ")
 
-    return usr_char, ('x' if usr_char == 'o' else 'o')
+    return usr_char.upper(), ('X' if usr_char == 'O' else 'O')
 
 
 def get_usr_move(available_moves: list[str]):
@@ -149,12 +149,18 @@ def main():
     while available_moves:
 
         usr_move = get_usr_move(available_moves)
-        python_move = get_python_move(available_moves)
-
+        # now remove the move from the available moves.
         available_moves.pop(available_moves.index(usr_move))
-        available_moves.pop(available_moves.index(python_move))
-
         update_game_map(game_map, usr_move, usr_char)
+
+        if available_moves:
+            # make sure that the moves not empty when,
+            # generating a random move.
+            python_move = get_python_move(available_moves)
+
+            # now remove the move from the available moves.
+            # and make sure the moves list is not empty.
+            available_moves.pop(available_moves.index(python_move))
         update_game_map(game_map, python_move, python_char)
 
 
