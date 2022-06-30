@@ -15,7 +15,7 @@
 from os import name as OS_NAME
 from os import system
 from time import sleep
-from random import randint
+from random import randint, choice
 
 
 # link for lines that i used for drawing the game map:
@@ -56,7 +56,10 @@ def clear():
         system("cls")
 
 
-def create_game_map(gameMap):
+clear()
+
+
+def create_game_map(game_map):
     """draw the game map"""
 
     game_map = """
@@ -67,7 +70,7 @@ def create_game_map(gameMap):
 ├───┼───┼───┤
 │ {6} │ {7} │ {8} │
 ╰───┴───┴───╯
-""".format(*sum(gameMap, []))
+""".format(*sum(game_map, []))
     print(game_map)
 
 
@@ -108,12 +111,32 @@ def get_usr_move(available_moves: list[str]):
     return usr_move
 
 
+def get_python_move(available_moves: list[str]):
+    """generate random move from the available ones,
+    for python."""
+
+    return choice(available_moves)
+
+
+def update_game_map(game_map: list, usr_move: str, usr_char: str):
+    """update the game map with new moves and clear the terminal."""
+    clear()
+
+    for i, row in enumerate(game_map):
+        for j, item in enumerate(row):
+
+            if item == usr_move:
+                game_map[i][j] = usr_char
+
+    create_game_map(game_map)
+
+
 def main():
-    gameMap = (
+    game_map = [
         ['1', '2', '3'],
-        ['4', '3', '6'],
+        ['4', '5', '6'],
         ['7', '8', '9']
-    )
+    ]
 
     available_moves = list("123456789")
 
@@ -121,9 +144,18 @@ def main():
     # and keep asking them until they give the right character.
     usr_char, python_char = set_characters()
 
-    create_game_map(gameMap)
+    create_game_map(game_map)
 
-    usr_move = get_usr_move(available_moves)
+    while available_moves:
+
+        usr_move = get_usr_move(available_moves)
+        python_move = get_python_move(available_moves)
+
+        available_moves.pop(available_moves.index(usr_move))
+        available_moves.pop(available_moves.index(python_move))
+
+        update_game_map(game_map, usr_move, usr_char)
+        update_game_map(game_map, python_move, python_char)
 
 
 if __name__ == "__main__":
