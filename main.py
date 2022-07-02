@@ -76,7 +76,7 @@ def set_characters():
         # keep asking the user.
         usr_char = get_usr_input("Choose 'X' or 'O': ")
 
-    return usr_char.upper(), ('X' if usr_char == 'O' else 'O')
+    return usr_char.upper(), ('X' if usr_char.upper() == 'O' else 'O')
 
 
 def get_usr_move(available_moves: list[str]):
