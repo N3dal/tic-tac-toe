@@ -24,6 +24,8 @@ from random import randint, choice
 # TODO: add resume future, so save the player progress in json file.
 # TODO: and when its play again ask them to continue or not.
 # TODO: add line when you win cut the x line or o line.
+# TODO: add dash-board for points.
+# TODO: add Colors to your terminal.
 
 
 def clear():
@@ -157,6 +159,10 @@ def main():
 
     available_moves = list("123456789")
 
+    # ask the user about the name.
+
+    usr_name = get_usr_input("Give your username: ")
+
     # ask the users which char they want to play with,
     # and keep asking them until they give the right character.
     usr_char, python_char = set_characters()
@@ -182,15 +188,15 @@ def main():
 
         if win(game_map, python_char, usr_char) == 1:
             # when the user win.
-            print("Good Job you win.")
+            print(f"Good Job {usr_name} you win.")
             break
         elif win(game_map, python_char, usr_char) == -1:
             # when python aka computer win.
-            print("Ohh no python win and you lose.")
+            print("Ohh no {usr_name}, python win and you lose.")
             break
     else:
         # if we got a draw.
-        print("Draw....")
+        print(f"Draw....")
 
 
 if __name__ == "__main__":
