@@ -16,6 +16,7 @@ from os import name as OS_NAME
 from os import system
 from time import sleep
 from random import randint, choice
+from termcolor import colored
 
 
 # link for lines that i used for drawing the game map:
@@ -55,6 +56,7 @@ def create_game_map(game_map):
 │ {6} │ {7} │ {8} │
 ╰───┴───┴───╯
 """.format(*sum(game_map, []))
+
     print(game_map)
 
 
@@ -102,15 +104,15 @@ def get_python_move(available_moves: list[str]):
     return choice(available_moves)
 
 
-def update_game_map(game_map: list, usr_move: str, usr_char: str):
+def update_game_map(game_map: list, game_move: str, game_char: str):
     """update the game map with new moves and clear the terminal."""
     clear()
 
     for i, row in enumerate(game_map):
         for j, item in enumerate(row):
 
-            if item == usr_move:
-                game_map[i][j] = usr_char
+            if item == game_move:
+                game_map[i][j] = game_char
 
     create_game_map(game_map)
 
