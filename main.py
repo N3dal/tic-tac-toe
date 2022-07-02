@@ -180,7 +180,17 @@ def main():
             available_moves.pop(available_moves.index(python_move))
         update_game_map(game_map, python_move, python_char)
 
-        print(win(game_map, python_char, usr_char))
+        if win(game_map, python_char, usr_char) == 1:
+            # when the user win.
+            print("Good Job you win.")
+            break
+        elif win(game_map, python_char, usr_char) == -1:
+            # when python aka computer win.
+            print("Ohh no python win and you lose.")
+            break
+    else:
+        # if we got a draw.
+        print("Draw....")
 
 
 if __name__ == "__main__":
