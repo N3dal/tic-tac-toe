@@ -25,24 +25,6 @@ from random import randint, choice
 # TODO: and when its play again ask them to continue or not.
 # TODO: add line when you win cut the x line or o line.
 
-# possible moves for user or python to win.
-MOVES_TO_WIN = [
-    # horizontal moves to win.
-    ([0, 0], [0, 1], [0, 2]),
-    ([1, 0], [1, 1], [1, 2]),
-    ([2, 0], [2, 1], [2, 2]),
-
-    # vertical moves to win.
-    ([0, 0], [1, 0], [2, 0]),
-    ([0, 1], [1, 1], [2, 1]),
-    ([0, 2], [1, 2], [2, 2]),
-
-    # diagonal moves to win.
-    ([0, 0], [1, 1], [2, 2]),
-    ([0, 2], [1, 1], [2, 0])
-
-]
-
 
 def clear():
     """wipe the terminal."""
@@ -131,6 +113,41 @@ def update_game_map(game_map: list, usr_move: str, usr_char: str):
     create_game_map(game_map)
 
 
+def win(game_map: list[list], python_char: str, usr_char: str):
+    """checkout for any win moves on the game map.
+    return 1 if the user win and return -1 if python win,
+    and return 0 if is draw."""
+    # possible moves for user or python to win.
+    MOVES_TO_WIN = [
+        # horizontal moves to win.
+        ([0, 0], [0, 1], [0, 2]),
+        ([1, 0], [1, 1], [1, 2]),
+        ([2, 0], [2, 1], [2, 2]),
+
+        # vertical moves to win.
+        ([0, 0], [1, 0], [2, 0]),
+        ([0, 1], [1, 1], [2, 1]),
+        ([0, 2], [1, 2], [2, 2]),
+
+        # diagonal moves to win.
+        ([0, 0], [1, 1], [2, 2]),
+        ([0, 2], [1, 1], [2, 0])
+
+    ]
+
+    for move in MOVES_TO_WIN:
+
+        [i1, j1], [i2, j2], [i3, j3] = move
+
+        temp_move = game_map[i1][j1] + game_map[i2][j2] + game_map[i3][j3]
+
+        if temp_move == (usr_char*3):
+            return 1
+
+        elif temp_move == (python_char*3):
+            return -1
+
+
 def main():
     game_map = [
         ['1', '2', '3'],
@@ -162,6 +179,8 @@ def main():
             # and make sure the moves list is not empty.
             available_moves.pop(available_moves.index(python_move))
         update_game_map(game_map, python_move, python_char)
+
+        print(win(game_map, python_char, usr_char))
 
 
 if __name__ == "__main__":
