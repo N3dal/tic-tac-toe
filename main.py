@@ -81,6 +81,7 @@ def set_characters():
         # keep asking the user.
         usr_char = get_usr_input("Choose 'X' or 'O': ")
 
+    # note: colored function return a "str" object.
     if usr_char.upper() == "X":
         # the user char here is 'X'.
         return colored("X", "red"), colored("O", "blue")
@@ -197,15 +198,16 @@ def main():
 
         if win(game_map, python_char, usr_char) == 1:
             # when the user win.
-            print(f"Good Job {usr_name} you win.")
+            print(colored(f"Good Job '{usr_name}' you win.", "green"))
             break
         elif win(game_map, python_char, usr_char) == -1:
             # when python aka computer win.
-            print("Ohh no {usr_name}, python win and you lose.")
+            print(
+                colored(f"Ohh no '{usr_name}', python win and you lose.", "red"))
             break
     else:
         # if we got a draw.
-        print(f"Draw....")
+        print(colored(f"Draw....", "yellow"))
 
 
 if __name__ == "__main__":
