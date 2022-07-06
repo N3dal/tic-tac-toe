@@ -17,6 +17,7 @@ from os import system
 from time import sleep
 from random import randint, choice
 from termcolor import colored
+import json
 
 
 # link for lines that i used for drawing the game map:
@@ -27,6 +28,8 @@ from termcolor import colored
 # TODO: add line when you win cut the x line or o line.
 # TODO: add dash-board for points.
 # TODO: add Colors to your terminal => Done.
+# TODO: add username to file and save all the scores, for ex: how many time,
+# TODO: this user win or lose and average, and add timer to see how it take for each round.
 
 
 def clear():
@@ -125,6 +128,16 @@ def update_game_map(game_map: list, game_move: str, game_char: str):
     create_game_map(game_map)
 
 
+def save_moves_to_file(moves: list, available_moves: list):
+    """save user and python moves into file,
+    so we can continue the game if we quit."""
+
+    DEFAULT_FILE_NAME = "game_data.json"
+
+    with open(f"./{DEFAULT_FILE_NAME}", "w") as game_data_file:
+        json.dump([moves, available_moves], game_data_file)
+
+
 def win(game_map: list[list], python_char: str, usr_char: str):
     """checkout for any win moves on the game map.
     return 1 if the user win and return -1 if python win,
@@ -195,6 +208,8 @@ def main():
             # and make sure the moves list is not empty.
             available_moves.pop(available_moves.index(python_move))
         update_game_map(game_map, python_move, python_char)
+
+        save_moves_to_file(game_map, available_moves)
 
         if win(game_map, python_char, usr_char) == 1:
             # when the user win.
