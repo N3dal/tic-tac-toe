@@ -75,12 +75,19 @@ def set_characters():
     return tuple contain two strings,
     values one for user-char and the another,
     one for python-char."""
-    usr_char = get_usr_input("Choose 'X' or 'O': ")
+    usr_char = get_usr_input(
+        f"Choose{colored(''' 'X' ''', 'red')}or{colored(''' 'O' ''', 'blue')}': ")
     while usr_char not in ('x', 'o'):
         # keep asking the user.
         usr_char = get_usr_input("Choose 'X' or 'O': ")
 
-    return usr_char.upper(), ('X' if usr_char.upper() == 'O' else 'O')
+    if usr_char.upper() == "X":
+        # the user char here is 'X'.
+        return colored("X", "red"), colored("O", "blue")
+
+    else:
+        # the user char here is 'O'.
+        return colored("O", "blue"), colored("X", "red")
 
 
 def get_usr_move(available_moves: list[str]):
@@ -163,7 +170,7 @@ def main():
 
     # ask the user about the name.
 
-    usr_name = get_usr_input("Give your username: ")
+    usr_name = get_usr_input(colored("Give your username: ", "yellow"))
 
     # ask the users which char they want to play with,
     # and keep asking them until they give the right character.
