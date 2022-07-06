@@ -26,7 +26,7 @@ from termcolor import colored
 # TODO: and when its play again ask them to continue or not.
 # TODO: add line when you win cut the x line or o line.
 # TODO: add dash-board for points.
-# TODO: add Colors to your terminal.
+# TODO: add Colors to your terminal => Done.
 
 
 def clear():
