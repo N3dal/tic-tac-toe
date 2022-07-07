@@ -135,7 +135,11 @@ def save_moves_to_file(moves: list, available_moves: list):
     DEFAULT_FILE_NAME = "game_data.json"
 
     with open(f"./{DEFAULT_FILE_NAME}", "w") as game_data_file:
-        json.dump([moves, available_moves], game_data_file)
+        data_dictionary = {
+            "game_map": moves,
+            "available_moves": available_moves
+        }
+        json.dump(data_dictionary, game_data_file)
 
 
 def win(game_map: list[list], python_char: str, usr_char: str):
