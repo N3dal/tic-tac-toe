@@ -128,8 +128,9 @@ def update_game_map(game_map: list, game_move: str, game_char: str):
     create_game_map(game_map)
 
 
-def save_moves_to_file(moves: list, available_moves: list):
+def save_game_status_to_file(moves: list, available_moves: list):
     """save user and python moves into file,
+    and also save all available moves,
     so we can continue the game if we quit."""
 
     DEFAULT_FILE_NAME = "game_data.json"
