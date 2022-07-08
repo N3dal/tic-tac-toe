@@ -140,7 +140,43 @@ def save_game_status_to_file(moves: list, available_moves: list):
             "game_map": moves,
             "available_moves": available_moves
         }
+
         json.dump(data_dictionary, game_data_file)
+
+
+def dash_board(game_score_data: dict):
+    """create the dashboard and show to the users.
+    this dashboard contain the username and all,
+    scores for that user."""
+
+    (username, user_score), (python, python_score) = game_score_data.items()
+
+    # first convert scores from integer to str,
+    # and make sure to fill with zeros.
+    user_score = str(user_score).zfill(2)
+    python_score = str(python_score).zfill(2)
+
+    # add colors to username and the scores.
+    username = colored(username, "red")
+    python = colored(python, "green")
+
+    user_score = colored(user_score, "yellow")
+    python_score = colored(python_score, "yellow")
+
+    top_line = "╭───────────────────┬──────────────────╮"
+    mid_line = "│    {0}   │     {1}      │".format
+    sep_line = "├───────────────────┼──────────────────┤"
+    bottom_line = "╰───────────────────┴──────────────────╯"
+
+    # print out the dashboard.
+    print(top_line)
+    print(mid_line(username.center(21), python.center(16)))
+    print(sep_line)
+    # note: colored work as str functor so it will,
+    # convert an integer type to str, so we can use,
+    # center method.
+    print(mid_line(user_score.center(21), python_score.center(16)))
+    print(bottom_line)
 
 
 def win(game_map: list[list], python_char: str, usr_char: str):
@@ -231,4 +267,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    dash_board({"Mike": 1, "python": 8})
