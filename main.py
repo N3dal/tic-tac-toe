@@ -260,7 +260,7 @@ def main_menu():
         _exit()
 
 
-def main():
+def start_game():
     game_map = [
         ['1', '2', '3'],
         ['4', '5', '6'],
@@ -310,6 +310,10 @@ def main():
     else:
         # if we got a draw.
         print(colored(f"Draw....", "yellow"))
+
+
+def main():
+    pass
 
 
 if __name__ == "__main__":
