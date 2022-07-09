@@ -260,14 +260,21 @@ def main_menu():
         _exit()
 
 
-def start_game():
-    game_map = [
-        ['1', '2', '3'],
-        ['4', '5', '6'],
-        ['7', '8', '9']
-    ]
+def start_game(game_map: list = None, available_moves: list = None):
+    """start either new game or load old game depending on,
+    the function args if we pass game_map list and available_moves,
+    list to this function that's mean we will load an old game,
+    and if we not pass any arg then we will start new game."""
 
-    available_moves = list("123456789")
+    if game_map is None:
+        game_map = [
+            ['1', '2', '3'],
+            ['4', '5', '6'],
+            ['7', '8', '9']
+        ]
+
+    if available_moves is None:
+        available_moves = list("123456789")
 
     # ask the user about the name.
 
@@ -296,7 +303,7 @@ def start_game():
             available_moves.pop(available_moves.index(python_move))
         update_game_map(game_map, python_move, python_char)
 
-        save_moves_to_file(game_map, available_moves)
+        save_game_status_to_file(game_map, available_moves)
 
         if win(game_map, python_char, usr_char) == 1:
             # when the user win.
@@ -313,10 +320,19 @@ def start_game():
 
 
 def main():
-    pass
+
+    game_map = [
+        ['1', 'X', '3'],
+        ['4', 'O', '6'],
+        ['7', '8', 'O']
+    ]
+
+    available_moves = list("134678")
+
+    start_game(game_map, available_moves)
 
 
 if __name__ == "__main__":
-    main_menu()
-    # main()
+    # main_menu()
+    main()
     # dash_board({"Mike": 1, "python": 8})
