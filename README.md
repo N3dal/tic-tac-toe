@@ -4,8 +4,7 @@ simple tic-tac-toe in terminal, with some extra stuff
 like colors and main menu and other things that no one
 really needs.
 
-**This project built with** ![python](https://img.shields.io/badge/python-3.x-green) and ![love](https://img.shields.io/badge/-%E2%9D%A4%EF%B8%8F%20-red)
-
+**This project built with** ![python](https://img.shields.io/badge/python-3.x-green) and ❤️
 ![working-on-it](https://img.shields.io/badge/Still--Work-On--It-orange)
 
 ## Screenshots:
