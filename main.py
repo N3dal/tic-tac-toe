@@ -24,9 +24,9 @@ from sys import exit as _exit
 # link for lines that i used for drawing the game map:
 # https: // en.wikipedia.org/wiki/Box-drawing_character
 
-# TODO: add resume future, so save the player progress in json file.
+# TODO: add continue future, so save the player progress and scores in json file.
 # TODO: and when its play again ask them to continue or not.
-# TODO: add line when you win cut the x line or o line.
+# TODO: add line when user win cuts the x line or o line.
 # TODO: add dash-board for points.
 # TODO: add Colors to your terminal => Done.
 # TODO: add username to file and save all the scores, for ex: how many time,
@@ -245,7 +245,7 @@ def main_menu():
 
     if usr_option == "1":
         # start New-game.
-        pass
+        _new_game()
 
     elif usr_option == "2":
         # load Old-game from game data file.
@@ -258,6 +258,12 @@ def main_menu():
     else:
         # kill the program and quit.
         _exit()
+
+
+def _new_game():
+    """"""
+    clear()
+    start_game()
 
 
 def start_game(game_map: list = None, available_moves: list = None):
@@ -333,6 +339,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # main_menu()
-    main()
+    main_menu()
+    # main()
     # dash_board({"Mike": 1, "python": 8})
