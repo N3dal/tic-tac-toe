@@ -18,6 +18,7 @@ from time import sleep
 from random import randint, choice
 from termcolor import colored
 import json
+from sys import exit as _exit
 
 
 # link for lines that i used for drawing the game map:
@@ -30,6 +31,7 @@ import json
 # TODO: add Colors to your terminal => Done.
 # TODO: add username to file and save all the scores, for ex: how many time,
 # TODO: this user win or lose and average, and add timer to see how it take for each round.
+# TODO: add settings options to the game.
 
 
 def clear():
@@ -214,6 +216,50 @@ def win(game_map: list[list], python_char: str, usr_char: str):
             return -1
 
 
+def main_menu():
+    """draw the game main menu for the users."""
+
+    # first clear terminal screen.
+    clear()
+
+    # create tuple that contain game_option names and their colors.
+    GAME_OPTIONS = (
+        ("New Game", "green"),
+        ("Load Game", "yellow"),
+        ("Settings", "blue"),
+        ("Exit", "red")
+    )
+
+    for index, (option_name, color) in enumerate(GAME_OPTIONS, 1):
+
+        menu_option = colored(f"[{index}] {option_name}", color).center(80)
+
+        print(menu_option)
+
+    usr_option = get_usr_input(": ")
+
+    if usr_option not in [*"1234"]:
+        # if the user give us wrong input,
+        # or option out of range.
+        main_menu()
+
+    if usr_option == "1":
+        # start New-game.
+        pass
+
+    elif usr_option == "2":
+        # load Old-game from game data file.
+        pass
+
+    elif usr_option == "3":
+        # open the setting page.
+        pass
+
+    else:
+        # kill the program and quit.
+        _exit()
+
+
 def main():
     game_map = [
         ['1', '2', '3'],
@@ -267,5 +313,6 @@ def main():
 
 
 if __name__ == "__main__":
+    main_menu()
     # main()
-    dash_board({"Mike": 1, "python": 8})
+    # dash_board({"Mike": 1, "python": 8})
