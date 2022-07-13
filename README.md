@@ -9,7 +9,7 @@ really needs.
 
 ![working-on-it](https://img.shields.io/badge/Still--Work-On--It-orange)
 
-## Screenshots:
+## Demo:
 
 ![screenshot_01](./src/screenshot01.gif)
 
