@@ -49,10 +49,41 @@ def clear():
         # system("your-command")
         pass
 
-        
     return None
 
+
 clear()
+
+
+class Map:
+    """Represent the Game map"""
+
+    def __init__(self):
+        pass
+
+    @classmethod
+    def draw_game_map(cls, game_map: list):
+        """"""
+        # first clear;
+        clear()
+
+        game_map = """
+╭───┬───┬───╮
+│ {0} │ {1} │ {2} │
+├───┼───┼───┤
+│ {3} │ {4} │ {5} │
+├───┼───┼───┤
+│ {6} │ {7} │ {8} │
+╰───┴───┴───╯
+""".format(*sum(game_map, []))
+
+        print(game_map)
+
+        return None
+
+
+class Dashboard:
+    pass
 
 
 def create_game_map(game_map):
@@ -346,5 +377,5 @@ def main():
 
 if __name__ == "__main__":
     main_menu()
-    # main()
-    # dash_board({"Mike": 1, "python": 8})
+    main()
+    dash_board({"Mike": 1, "python": 8})
