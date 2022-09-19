@@ -41,10 +41,16 @@ def clear():
         # *nix machines.
         system("clear")
 
-    else:
-        # windows machines.
+    elif OS_NAME == "windows":
         system("cls")
 
+    else:
+        # for any os in the world.
+        # system("your-command")
+        pass
+
+        
+    return None
 
 clear()
 
