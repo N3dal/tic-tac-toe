@@ -1,8 +1,11 @@
 
 <!-- to center any thing use the <p> tag-->
-<p align="center">
+<!-- <p align="center">
   <img src="./src/wallpaper.gif" />
-</p>
+</p> -->
+
+<img src="./src/wallpaper.gif" align="center" />
+
 
 simple tic-tac-toe in terminal, with some extra stuff
 like colors and main menu and other things that no one
