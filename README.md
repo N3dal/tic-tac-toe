@@ -1,4 +1,5 @@
-# TIC-TAC-TOE
+
+<!-- to center any thing use the <p> tag-->
 <p align="center">
   <img src="./src/wallpaper.gif" />
 </p>
