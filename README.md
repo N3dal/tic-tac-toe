@@ -1,6 +1,7 @@
 # TIC-TAC-TOE
-
-![wallpaper](./src/wallpaper.gif)
+<p align="center">
+  <img src="./src/wallpaper.gif" />
+</p>
 
 simple tic-tac-toe in terminal, with some extra stuff
 like colors and main menu and other things that no one
