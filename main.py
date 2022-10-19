@@ -41,28 +41,6 @@ class Dashboard:
     pass
 
 
-def create_game_map(game_map):
-    """draw the game map"""
-
-    game_map = """
-╭───┬───┬───╮
-│ {0} │ {1} │ {2} │
-├───┼───┼───┤
-│ {3} │ {4} │ {5} │
-├───┼───┼───┤
-│ {6} │ {7} │ {8} │
-╰───┴───┴───╯
-""".format(*sum(game_map, []))
-
-    print(game_map)
-
-
-def get_usr_input(msg: str):
-    """"""
-
-    return input(msg).strip().lower()
-
-
 def set_characters():
     """ask the users about the character they want,
     to play with it and get it from them, and select,
@@ -86,56 +64,6 @@ def set_characters():
     else:
         # the user char here is 'O'.
         return colored("O", "blue"), colored("X", "red")
-
-
-def get_usr_move(available_moves: list[str]):
-    """ask the user about the next move,
-    and make sure that move in the right range,
-    and its available."""
-
-    usr_move = get_usr_input("Choose one move from the available ones: ")
-
-    while usr_move not in available_moves:
-        print("this move isn't available!!")
-        usr_move = get_usr_input("Choose one move from the available ones: ")
-
-    return usr_move
-
-
-def get_python_move(available_moves: list[str]):
-    """generate random move from the available ones,
-    for python."""
-
-    return choice(available_moves)
-
-
-def update_game_map(game_map: list, game_move: str, game_char: str):
-    """update the game map with new moves and clear the terminal."""
-    Tools.clear()
-
-    for i, row in enumerate(game_map):
-        for j, item in enumerate(row):
-
-            if item == game_move:
-                game_map[i][j] = game_char
-
-    create_game_map(game_map)
-
-
-def save_game_status_to_file(moves: list, available_moves: list):
-    """save user and python moves into file,
-    and also save all available moves,
-    so we can continue the game if we quit."""
-
-    DEFAULT_FILE_NAME = "last_game_data.json"
-
-    with open(f"./{DEFAULT_FILE_NAME}", "w") as game_data_file:
-        data_dictionary = {
-            "game_map": moves,
-            "available_moves": available_moves
-        }
-
-        json.dump(data_dictionary, game_data_file)
 
 
 def dash_board(game_score_data: dict):
@@ -171,41 +99,6 @@ def dash_board(game_score_data: dict):
     # center method.
     print(mid_line(user_score.center(21), python_score.center(16)))
     print(bottom_line)
-
-
-def win(game_map: list[list], python_char: str, usr_char: str):
-    """checkout for any win moves on the game map.
-    return 1 if the user win and return -1 if python win,
-    and return 0 if is draw."""
-    # possible moves for user or python to win.
-    MOVES_TO_WIN = [
-        # horizontal moves to win.
-        ([0, 0], [0, 1], [0, 2]),
-        ([1, 0], [1, 1], [1, 2]),
-        ([2, 0], [2, 1], [2, 2]),
-
-        # vertical moves to win.
-        ([0, 0], [1, 0], [2, 0]),
-        ([0, 1], [1, 1], [2, 1]),
-        ([0, 2], [1, 2], [2, 2]),
-
-        # diagonal moves to win.
-        ([0, 0], [1, 1], [2, 2]),
-        ([0, 2], [1, 1], [2, 0])
-
-    ]
-
-    for move in MOVES_TO_WIN:
-
-        [i1, j1], [i2, j2], [i3, j3] = move
-
-        temp_move = game_map[i1][j1] + game_map[i2][j2] + game_map[i3][j3]
-
-        if temp_move == (usr_char*3):
-            return 1
-
-        elif temp_move == (python_char*3):
-            return -1
 
 
 def main_menu():
@@ -318,17 +211,6 @@ def start_game(game_map: list = None, available_moves: list = None):
 
 
 def main():
-
-    # game_map = [
-    #     ['1', 'X', '3'],
-    #     ['4', 'O', '6'],
-    #     ['7', '8', 'O']
-    # ]
-
-    # available_moves = list("134678")
-
-    # start_game(game_map, available_moves)
-    pass
 
     game_map = Map()
 
