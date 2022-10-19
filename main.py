@@ -18,6 +18,7 @@ from time import sleep
 from random import randint, choice
 from termcolor import colored
 import json
+from tools import Tools
 from sys import exit as _exit
 
 
@@ -33,26 +34,8 @@ from sys import exit as _exit
 # TODO: this user win or lose and average, and add timer to see how it take for each round.
 # TODO: add settings options to the game.
 
-
-def clear():
-    """wipe the terminal."""
-
-    if OS_NAME == "posix":
-        # *nix machines.
-        system("clear")
-
-    elif OS_NAME == "windows":
-        system("cls")
-
-    else:
-        # for any os in the world.
-        # system("your-command")
-        pass
-
-    return None
-
-
-clear()
+# wipe terminal screen;
+Tools.clear()
 
 
 class Map:
@@ -65,7 +48,7 @@ class Map:
     def draw_game_map(cls, game_map: list):
         """"""
         # first clear;
-        clear()
+        Tools.clear()
 
         game_map = """
 ╭───┬───┬───╮
@@ -156,7 +139,7 @@ def get_python_move(available_moves: list[str]):
 
 def update_game_map(game_map: list, game_move: str, game_char: str):
     """update the game map with new moves and clear the terminal."""
-    clear()
+    Tools.clear()
 
     for i, row in enumerate(game_map):
         for j, item in enumerate(row):
@@ -257,7 +240,7 @@ def main_menu():
     """draw the game main menu for the users."""
 
     # first clear terminal screen.
-    clear()
+    Tools.clear()
 
     # create tuple that contain game_option names and their colors.
     GAME_OPTIONS = (
@@ -299,7 +282,7 @@ def main_menu():
 
 def _new_game():
     """"""
-    clear()
+    Tools.clear()
     start_game()
 
 
