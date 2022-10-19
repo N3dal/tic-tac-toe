@@ -115,6 +115,53 @@ class Map:
 
         return None
 
+    def who_win(self, user_char: str, computer_char: str):
+        """
+        checkout for any win moves on the game map.
+        return "user" if the user win and return "computer" if computer win,
+        and return "draw" if is draw, and if its return None that is mean the,
+        game is still going;
+        """
+    # possible moves for user or python to win.
+        MOVES_TO_WIN = [
+            # horizontal moves to win.
+            ([0, 0], [0, 1], [0, 2]),
+            ([1, 0], [1, 1], [1, 2]),
+            ([2, 0], [2, 1], [2, 2]),
+
+            # vertical moves to win.
+            ([0, 0], [1, 0], [2, 0]),
+            ([0, 1], [1, 1], [2, 1]),
+            ([0, 2], [1, 2], [2, 2]),
+
+            # diagonal moves to win.
+            ([0, 0], [1, 1], [2, 2]),
+            ([0, 2], [1, 1], [2, 0])
+
+        ]
+
+        for move in MOVES_TO_WIN:
+
+            [i1, j1], [i2, j2], [i3, j3] = move
+
+            temp_move = self.game_map[i1][j1] + \
+                self.game_map[i2][j2] + self.game_map[i3][j3]
+
+            if temp_move == (user_char*3):
+                # if the user win;
+                return "user"
+
+            elif temp_move == (computer_char*3):
+                # if the computer win;
+                return "computer"
+
+            else:
+                # if its a draw;
+                return "draw"
+
+        # thats mean the game is still going;
+        return None
+
 
 class Dashboard:
     pass
