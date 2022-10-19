@@ -16,7 +16,6 @@ from tools import Tools
 from time import sleep
 from random import randint, choice
 from termcolor import colored
-import json
 from sys import exit as _exit
 
 

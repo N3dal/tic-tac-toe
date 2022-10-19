@@ -1,6 +1,7 @@
 
 
 from tools import Tools
+import json
 
 
 class Map:
@@ -139,13 +140,14 @@ m = Map()
 m.make_move("3", "x")
 m.make_move("2", "x")
 m.make_move("5", "x")
-m.make_move("4", "x")
-m.make_move("9", "x")
+# m.make_move("4", "x")
+# m.make_move("9", "x")
 
 
 m.make_move("6", "o")
-m.make_move("7", "o")
-m.make_move("8", "o")
-m.make_move("1", "o")
+# m.make_move("7", "o")
+# m.make_move("8", "o")
+# m.make_move("1", "o")
 
 print(m.who_win("x", "o"))
+m.save()
