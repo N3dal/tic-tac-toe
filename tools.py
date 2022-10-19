@@ -3,6 +3,9 @@
 
 """
 
+from os import name as OS_NAME
+from os import system
+
 
 class Tools:
     """"""
