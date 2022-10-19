@@ -14,6 +14,7 @@
 
 from tools import Tools
 from game_map import Map
+from players import (User, Computer)
 from time import sleep
 from random import randint, choice
 from termcolor import colored
@@ -38,43 +39,6 @@ Tools.clear()
 
 class Dashboard:
     pass
-
-
-
-
-class User:
-    """"""
-
-    def __init__(self, user_char: str):
-
-        self.__user_char = user_char
-
-    @property
-    def char(self):
-        """the char that the user use to play;"""
-        return self.__user_char
-
-    @staticmethod
-    def get_input():
-        return input(msg).strip().lower()
-
-    def get_move(self, available_move):
-        """
-        ask the user about the next move,
-        and make sure that move in the right range,
-        and its available.
-
-        return str;
-        """
-
-        usr_move = self.get_input("Choose one move from the available ones: ")
-
-        while usr_move not in available_moves:
-            print("this move isn't available!!")
-            usr_move = get_usr_input(
-                "Choose one move from the available ones: ")
-
-        return usr_move
 
 
 def create_game_map(game_map):
@@ -364,11 +328,38 @@ def main():
     # available_moves = list("134678")
 
     # start_game(game_map, available_moves)
+    pass
 
-    u = User("x")
+    game_map = Map()
 
-    u.user_char = "o"
-    print(u.user_char)
+    # set the user and the computer chars;
+    user_char, computer_char = set_characters()
+
+    user = User(user_char)
+    computer = Computer(computer_char)
+
+    game_map.draw()
+
+    while game_map.available_moves:
+
+        usr_move = user.get_move(game_map.available_moves)
+        game_map.make_move(usr_move, user.char)
+
+        cmp_move = computer.get_move(game_map.available_moves)
+        game_map.make_move(cmp_move, computer_char)
+
+        game_map.save()
+
+        result = game_map.who_win(user.char, computer.char)
+
+        if result == "user":
+            print("user win")
+
+        elif result == "computer":
+            print("computer win")
+
+        elif result == "draw":
+            print("draw")
 
 
 if __name__ == "__main__":
