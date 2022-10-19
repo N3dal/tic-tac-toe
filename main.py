@@ -38,7 +38,35 @@ Tools.clear()
 
 
 class Dashboard:
-    pass
+    """
+    create the dashboard and show to the users.
+    this dashboard contain the username and all,
+    scores for that user
+    """
+
+    def __init__(self):
+
+        self.top_line = "╭───────────────────┬──────────────────╮"
+        self.mid_line = "│    {0}   │     {1}      │".format
+        self.sep_line = "├───────────────────┼──────────────────┤"
+        self.bottom_line = "╰───────────────────┴──────────────────╯"
+
+    def show(self):
+        """
+        print the dashboard on the terminal screen;
+
+
+        return None;
+        """
+        # print out the dashboard.
+        print(self.top_line)
+        print(self.mid_line(username.center(21), python.center(16)))
+        print(self.sep_line)
+        # note: colored work as str functor so it will,
+        # convert an integer type to str, so we can use,
+        # center method.
+        print(self.mid_line(user_score.center(21), python_score.center(16)))
+        print(self.bottom_line)
 
 
 def set_characters():
