@@ -13,6 +13,7 @@
 # -----------------------------------------------------------------
 
 from tools import Tools
+from game_map import Map
 from time import sleep
 from random import randint, choice
 from termcolor import colored
@@ -37,6 +38,43 @@ Tools.clear()
 
 class Dashboard:
     pass
+
+
+
+
+class User:
+    """"""
+
+    def __init__(self, user_char: str):
+
+        self.__user_char = user_char
+
+    @property
+    def char(self):
+        """the char that the user use to play;"""
+        return self.__user_char
+
+    @staticmethod
+    def get_input():
+        return input(msg).strip().lower()
+
+    def get_move(self, available_move):
+        """
+        ask the user about the next move,
+        and make sure that move in the right range,
+        and its available.
+
+        return str;
+        """
+
+        usr_move = self.get_input("Choose one move from the available ones: ")
+
+        while usr_move not in available_moves:
+            print("this move isn't available!!")
+            usr_move = get_usr_input(
+                "Choose one move from the available ones: ")
+
+        return usr_move
 
 
 def create_game_map(game_map):
@@ -317,18 +355,23 @@ def start_game(game_map: list = None, available_moves: list = None):
 
 def main():
 
-    game_map = [
-        ['1', 'X', '3'],
-        ['4', 'O', '6'],
-        ['7', '8', 'O']
-    ]
+    # game_map = [
+    #     ['1', 'X', '3'],
+    #     ['4', 'O', '6'],
+    #     ['7', '8', 'O']
+    # ]
 
-    available_moves = list("134678")
+    # available_moves = list("134678")
 
-    start_game(game_map, available_moves)
+    # start_game(game_map, available_moves)
+
+    u = User("x")
+
+    u.user_char = "o"
+    print(u.user_char)
 
 
 if __name__ == "__main__":
-    main_menu()
+    # main_menu()
     main()
-    dash_board({"Mike": 1, "python": 8})
+    # dash_board({"Mike": 1, "python": 8})
