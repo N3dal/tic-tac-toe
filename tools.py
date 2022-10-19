@@ -10,6 +10,9 @@ from os import system
 class Tools:
     """"""
 
+    # the file that we will use to save our status;
+    DEFAULT_FILE_NAME = "last_game_data.json"
+
     @staticmethod
     def clear():
         """wipe the terminal."""
