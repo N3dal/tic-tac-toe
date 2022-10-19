@@ -12,13 +12,11 @@
 # ///
 # -----------------------------------------------------------------
 
-from os import name as OS_NAME
-from os import system
+from tools import Tools
 from time import sleep
 from random import randint, choice
 from termcolor import colored
 import json
-from tools import Tools
 from sys import exit as _exit
 
 
@@ -41,16 +39,35 @@ Tools.clear()
 class Map:
     """Represent the Game map"""
 
-    def __init__(self):
-        pass
+    def __init__(self, game_map: list = None, available_moves: list = None):
 
-    @classmethod
-    def draw_game_map(cls, game_map: list):
-        """"""
+        pass
+        # note if game map is none that mean start new game;
+        # if its note none then load old game;
+
+        if game_map is None or available_moves is None:
+            # start new game;
+            self.game_map = [
+                ['1', '2', '3'],
+                ['4', '5', '6'],
+                ['7', '8', '9']
+            ]
+
+            self.available_moves = list("123456789")
+
+        else:
+            # load old game;
+            self.game_map = game_map
+            self.available_moves = available_moves
+
+    def draw(self):
+        """
+        print the game map on the terminal screen;
+        """
         # first clear;
         Tools.clear()
 
-        game_map = """
+        print("""
 ╭───┬───┬───╮
 │ {0} │ {1} │ {2} │
 ├───┼───┼───┤
@@ -58,11 +75,28 @@ class Map:
 ├───┼───┼───┤
 │ {6} │ {7} │ {8} │
 ╰───┴───┴───╯
-""".format(*sum(game_map, []))
-
-        print(game_map)
+""".format(*sum(self.game_map, []))
+        )
 
         return None
+
+    def make_move(self, move: str, game_char: str):
+        """update the game map values when the user or computer make moves;
+
+        return None
+        """
+        # Tools.clear()
+
+        for i, row in enumerate(self.game_map):
+            for j, item in enumerate(row):
+
+                if item == move:
+                    self.game_map[i][j] = game_char
+
+        # now update the terminal screen by re-draw the game-map;
+        self.draw()
+        
+    
 
 
 class Dashboard:
