@@ -11,7 +11,7 @@ class Map:
 
         pass
         # note if game map is none that mean start new game;
-        # if its note none then load old game;
+        # if its not none then load old game;
 
         if game_map is None or available_moves is None:
             # start new game;
