@@ -95,8 +95,25 @@ class Map:
 
         # now update the terminal screen by re-draw the game-map;
         self.draw()
-        
-    
+
+    def save(self):
+        """
+        save user and computer moves into file,
+        and also save all available moves,
+        so we can continue the game if we quit.
+
+        return None;
+        """
+
+        with open(f"./{Tools.DEFAULT_FILE_NAME}", "w") as file:
+            data_dictionary = {
+                "game_map": self.game_map,
+                "available_moves": self.available_moves
+            }
+
+            json.dump(data_dictionary, file)
+
+        return None
 
 
 class Dashboard:
