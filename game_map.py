@@ -117,7 +117,6 @@ class Map:
 
             temp_move = self.game_map[i1][j1] + \
                 self.game_map[i2][j2] + self.game_map[i3][j3]
-            # print(len(self.available_moves))
 
             if temp_move == (user_char*3):
                 # if the user win;
@@ -133,21 +132,4 @@ class Map:
 
         # thats mean the game is still going;
         return None
-
-
-m = Map()
-
-m.make_move("3", "x")
-m.make_move("2", "x")
-m.make_move("5", "x")
-# m.make_move("4", "x")
-# m.make_move("9", "x")
-
-
-m.make_move("6", "o")
-# m.make_move("7", "o")
-# m.make_move("8", "o")
-# m.make_move("1", "o")
-
-print(m.who_win("x", "o"))
-m.save()
+    
